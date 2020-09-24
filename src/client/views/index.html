@@ -3,16 +3,14 @@
     <head>
         <meta charset="utf-8">
         <title>Test</title>
+        <link href="https://fonts.googleapis.com/css2?family=Monofett&display=swap" rel="stylesheet">
     </head>
 
     <body>
 
         <header>
-            <div class="">
-                Logo
-            </div>
-            <div class="">
-                navigation
+            <div class="logo">
+                Evaluate news
             </div>
         </header>
 
@@ -25,9 +23,11 @@
             <section>
 
             <section>
-                <strong>Form Results:</strong>
-                <h2 id="results__heading"></h2>
-                <div id="results"></div>
+                <strong class="logo">Form Results:</strong>
+                <div class="form_results">
+                    <h2 id="results__heading"></h2>
+                    <div id="results"></div>
+                </div>
             </section>
         </main>
 
@@ -35,15 +35,15 @@
             <p>This is a footer</p>
         </footer>
 
-        <!-- <script>
+        <script>
             // Check that service workers are supported
             if ('serviceWorker' in navigator) {
                 // Use the window load event to keep the page load performant
                 window.addEventListener('load', () => {
-                    navigator.serviceWorker.register('/service-worker.js');
+                    navigator.serviceWorker.register('/sw.js');
                 });
             }
-        </script> -->
+        </script>
 
     </body>
 </html>

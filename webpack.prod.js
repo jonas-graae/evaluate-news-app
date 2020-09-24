@@ -10,7 +10,7 @@ const workbox = require('workbox-webpack-plugin');
 
 module.exports = {
     entry: './src/client/index.js',
-    mode: 'development',
+    mode: 'production',
 
     optimization: {
         minimizer: [new TerserPlugin({}), new OptimizeCSSAssetsPlugin({})],
@@ -31,7 +31,7 @@ module.exports = {
             template: "./src/client/views/index.html",
             filename: "./index.html",
             minify: {
-                collapseWhitespace: true, //set true to minify and save space
+                collapseWhitespace: false, //set true to minify and save space
                 removeComments: true //set true to remove comments and save space
             }
         }),
@@ -40,17 +40,11 @@ module.exports = {
             filename: '[name].css'
         }),
 
-        new CleanWebpackPlugin({
-            // Simulate the removal of files
-            dry: true,
-            // Write Logs to Console
-            verbose: true,
-            // Automatically remove all unused webpack assets on rebuild
-            cleanStaleWebpackAssets: true,
-            protectWebpackAssets: false
-        }),
+        new CleanWebpackPlugin(),
 
-        new workbox.GenerateSW()
+        new workbox.GenerateSW({
+            swDest: 'sw.js',
+        })
     ],
 
     module: {
