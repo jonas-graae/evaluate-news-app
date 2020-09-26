@@ -1,17 +1,25 @@
-const urlChecker = require('is-valid-http-url');
+import { validURL } from './validURL';
 
-function handleSubmit() {
-    let sentiment__URL = document.getElementById('sentiment__URL').value;
-    
-    postData('http://localhost:8082/savetext', {
-        customURL: sentiment__URL
-    }).then(() => {
-        return getSentimentData('http://localhost:8082/sentiment')
-    }).then(data => {
-        updateUI(data);
-    }).catch((error) => {
-        console.log("error", error);
-    })
+function handleSubmit(event) {
+    event.preventDefault();
+    const sentiment__URL = document.getElementById('sentiment__URL').value;
+    const spinner = document.querySelector('.spinner'); 
+
+    if(validURL(sentiment__URL)) {
+        alert("This is a valid URL, please wait for senitment Analizis");
+        spinner.style.display = 'block';
+
+        postData('http://localhost:8082/savetext', {
+            customURL: sentiment__URL
+        }).then(() => {
+            return getSentimentData('http://localhost:8082/sentiment')
+        }).then(data => {
+            spinner.style.display = 'none';
+            updateUI(data);
+        }).catch((error) => {
+            console.log("error", error);
+        })
+    }
 }
 
 /* Function to POST data */

@@ -16,7 +16,7 @@
 
         <main>
             <section>
-                <form id="sentiment__form">
+                <form id="sentiment__form" onsubmit="return Client.handleSubmit(event)">
                     <input id="sentiment__URL" type="text" name="customURL" value="" placeholder="Enter URL" required>
                     <input id="sentiment__submit" type="submit" name="" value="submit">
                 </form>
@@ -25,6 +25,11 @@
             <section>
                 <strong class="logo">Form Results:</strong>
                 <div class="form_results">
+                    <div class="spinner">
+                        <div class="bounce1"></div>
+                        <div class="bounce2"></div>
+                        <div class="bounce3"></div>
+                    </div>
                     <h2 id="results__heading"></h2>
                     <div id="results"></div>
                 </div>
